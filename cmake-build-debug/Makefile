@@ -130,30 +130,30 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named ASD2_projet
+# Target rules for targets named hashmap_main
 
 # Build rule for target.
-ASD2_projet: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 ASD2_projet
-.PHONY : ASD2_projet
+hashmap_main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 hashmap_main
+.PHONY : hashmap_main
 
 # fast build rule for target.
-ASD2_projet/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ASD2_projet.dir\build.make CMakeFiles/ASD2_projet.dir/build
-.PHONY : ASD2_projet/fast
+hashmap_main/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\hashmap_main.dir\build.make CMakeFiles/hashmap_main.dir/build
+.PHONY : hashmap_main/fast
 
 #=============================================================================
-# Target rules for targets named bst_tests_run
+# Target rules for targets named hashmap_tests_run
 
 # Build rule for target.
-bst_tests_run: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 bst_tests_run
-.PHONY : bst_tests_run
+hashmap_tests_run: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 hashmap_tests_run
+.PHONY : hashmap_tests_run
 
 # fast build rule for target.
-bst_tests_run/fast:
-	$(MAKE) $(MAKESILENT) -f catch2_tests\CMakeFiles\bst_tests_run.dir\build.make catch2_tests/CMakeFiles/bst_tests_run.dir/build
-.PHONY : bst_tests_run/fast
+hashmap_tests_run/fast:
+	$(MAKE) $(MAKESILENT) -f catch2_tests\CMakeFiles\hashmap_tests_run.dir\build.make catch2_tests/CMakeFiles/hashmap_tests_run.dir/build
+.PHONY : hashmap_tests_run/fast
 
 main.obj: main.cpp.obj
 
@@ -161,7 +161,7 @@ main.obj: main.cpp.obj
 
 # target to build an object file
 main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ASD2_projet.dir\build.make CMakeFiles/ASD2_projet.dir/main.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\hashmap_main.dir\build.make CMakeFiles/hashmap_main.dir/main.cpp.obj
 .PHONY : main.cpp.obj
 
 main.i: main.cpp.i
@@ -170,7 +170,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ASD2_projet.dir\build.make CMakeFiles/ASD2_projet.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\hashmap_main.dir\build.make CMakeFiles/hashmap_main.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -179,7 +179,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ASD2_projet.dir\build.make CMakeFiles/ASD2_projet.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\hashmap_main.dir\build.make CMakeFiles/hashmap_main.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -190,8 +190,8 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... ASD2_projet
-	@echo ... bst_tests_run
+	@echo ... hashmap_main
+	@echo ... hashmap_tests_run
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

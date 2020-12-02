@@ -72,7 +72,7 @@ CMAKE_BINARY_DIR = "C:\Users\melvy\Desktop\Application\Drive\HEIG_VD\3em semestr
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/ASD2_projet.dir/all
+all: CMakeFiles/hashmap_main.dir/all
 all: catch2_tests/all
 
 .PHONY : all
@@ -83,7 +83,7 @@ preinstall: catch2_tests/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/ASD2_projet.dir/clean
+clean: CMakeFiles/hashmap_main.dir/clean
 clean: catch2_tests/clean
 
 .PHONY : clean
@@ -92,7 +92,7 @@ clean: catch2_tests/clean
 # Directory level rules for directory catch2_tests
 
 # Recursive "all" directory target.
-catch2_tests/all: catch2_tests/CMakeFiles/bst_tests_run.dir/all
+catch2_tests/all: catch2_tests/CMakeFiles/hashmap_tests_run.dir/all
 
 .PHONY : catch2_tests/all
 
@@ -102,63 +102,63 @@ catch2_tests/preinstall:
 .PHONY : catch2_tests/preinstall
 
 # Recursive "clean" directory target.
-catch2_tests/clean: catch2_tests/CMakeFiles/bst_tests_run.dir/clean
+catch2_tests/clean: catch2_tests/CMakeFiles/hashmap_tests_run.dir/clean
 
 .PHONY : catch2_tests/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/ASD2_projet.dir
+# Target rules for target CMakeFiles/hashmap_main.dir
 
 # All Build rule for target.
-CMakeFiles/ASD2_projet.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ASD2_projet.dir\build.make CMakeFiles/ASD2_projet.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ASD2_projet.dir\build.make CMakeFiles/ASD2_projet.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="C:\Users\melvy\Desktop\Application\Drive\HEIG_VD\3em semestre\ASD2\Projet\ASD2_projet\cmake-build-debug\CMakeFiles" --progress-num=1,2 "Built target ASD2_projet"
-.PHONY : CMakeFiles/ASD2_projet.dir/all
+CMakeFiles/hashmap_main.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\hashmap_main.dir\build.make CMakeFiles/hashmap_main.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\hashmap_main.dir\build.make CMakeFiles/hashmap_main.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="C:\Users\melvy\Desktop\Application\Drive\HEIG_VD\3em semestre\ASD2\Projet\ASD2_projet\cmake-build-debug\CMakeFiles" --progress-num=1,2 "Built target hashmap_main"
+.PHONY : CMakeFiles/hashmap_main.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/ASD2_projet.dir/rule: cmake_check_build_system
+CMakeFiles/hashmap_main.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\melvy\Desktop\Application\Drive\HEIG_VD\3em semestre\ASD2\Projet\ASD2_projet\cmake-build-debug\CMakeFiles" 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/ASD2_projet.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/hashmap_main.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\melvy\Desktop\Application\Drive\HEIG_VD\3em semestre\ASD2\Projet\ASD2_projet\cmake-build-debug\CMakeFiles" 0
-.PHONY : CMakeFiles/ASD2_projet.dir/rule
+.PHONY : CMakeFiles/hashmap_main.dir/rule
 
 # Convenience name for target.
-ASD2_projet: CMakeFiles/ASD2_projet.dir/rule
+hashmap_main: CMakeFiles/hashmap_main.dir/rule
 
-.PHONY : ASD2_projet
+.PHONY : hashmap_main
 
 # clean rule for target.
-CMakeFiles/ASD2_projet.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\ASD2_projet.dir\build.make CMakeFiles/ASD2_projet.dir/clean
-.PHONY : CMakeFiles/ASD2_projet.dir/clean
+CMakeFiles/hashmap_main.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\hashmap_main.dir\build.make CMakeFiles/hashmap_main.dir/clean
+.PHONY : CMakeFiles/hashmap_main.dir/clean
 
 #=============================================================================
-# Target rules for target catch2_tests/CMakeFiles/bst_tests_run.dir
+# Target rules for target catch2_tests/CMakeFiles/hashmap_tests_run.dir
 
 # All Build rule for target.
-catch2_tests/CMakeFiles/bst_tests_run.dir/all:
-	$(MAKE) $(MAKESILENT) -f catch2_tests\CMakeFiles\bst_tests_run.dir\build.make catch2_tests/CMakeFiles/bst_tests_run.dir/depend
-	$(MAKE) $(MAKESILENT) -f catch2_tests\CMakeFiles\bst_tests_run.dir\build.make catch2_tests/CMakeFiles/bst_tests_run.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="C:\Users\melvy\Desktop\Application\Drive\HEIG_VD\3em semestre\ASD2\Projet\ASD2_projet\cmake-build-debug\CMakeFiles" --progress-num=3,4,5 "Built target bst_tests_run"
-.PHONY : catch2_tests/CMakeFiles/bst_tests_run.dir/all
+catch2_tests/CMakeFiles/hashmap_tests_run.dir/all:
+	$(MAKE) $(MAKESILENT) -f catch2_tests\CMakeFiles\hashmap_tests_run.dir\build.make catch2_tests/CMakeFiles/hashmap_tests_run.dir/depend
+	$(MAKE) $(MAKESILENT) -f catch2_tests\CMakeFiles\hashmap_tests_run.dir\build.make catch2_tests/CMakeFiles/hashmap_tests_run.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="C:\Users\melvy\Desktop\Application\Drive\HEIG_VD\3em semestre\ASD2\Projet\ASD2_projet\cmake-build-debug\CMakeFiles" --progress-num=3,4,5 "Built target hashmap_tests_run"
+.PHONY : catch2_tests/CMakeFiles/hashmap_tests_run.dir/all
 
 # Build rule for subdir invocation for target.
-catch2_tests/CMakeFiles/bst_tests_run.dir/rule: cmake_check_build_system
+catch2_tests/CMakeFiles/hashmap_tests_run.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\melvy\Desktop\Application\Drive\HEIG_VD\3em semestre\ASD2\Projet\ASD2_projet\cmake-build-debug\CMakeFiles" 3
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 catch2_tests/CMakeFiles/bst_tests_run.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 catch2_tests/CMakeFiles/hashmap_tests_run.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\melvy\Desktop\Application\Drive\HEIG_VD\3em semestre\ASD2\Projet\ASD2_projet\cmake-build-debug\CMakeFiles" 0
-.PHONY : catch2_tests/CMakeFiles/bst_tests_run.dir/rule
+.PHONY : catch2_tests/CMakeFiles/hashmap_tests_run.dir/rule
 
 # Convenience name for target.
-bst_tests_run: catch2_tests/CMakeFiles/bst_tests_run.dir/rule
+hashmap_tests_run: catch2_tests/CMakeFiles/hashmap_tests_run.dir/rule
 
-.PHONY : bst_tests_run
+.PHONY : hashmap_tests_run
 
 # clean rule for target.
-catch2_tests/CMakeFiles/bst_tests_run.dir/clean:
-	$(MAKE) $(MAKESILENT) -f catch2_tests\CMakeFiles\bst_tests_run.dir\build.make catch2_tests/CMakeFiles/bst_tests_run.dir/clean
-.PHONY : catch2_tests/CMakeFiles/bst_tests_run.dir/clean
+catch2_tests/CMakeFiles/hashmap_tests_run.dir/clean:
+	$(MAKE) $(MAKESILENT) -f catch2_tests\CMakeFiles\hashmap_tests_run.dir\build.make catch2_tests/CMakeFiles/hashmap_tests_run.dir/clean
+.PHONY : catch2_tests/CMakeFiles/hashmap_tests_run.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

@@ -15,6 +15,12 @@
 ########################
 
 //Value Computed by CMake
+ASD2_Labs_2020_BINARY_DIR:STATIC=C:/Users/melvy/Desktop/Application/Drive/HEIG_VD/3em semestre/ASD2/Projet/ASD2_projet/cmake-build-debug
+
+//Value Computed by CMake
+ASD2_Labs_2020_SOURCE_DIR:STATIC=C:/Users/melvy/Desktop/Application/Drive/HEIG_VD/3em semestre/ASD2/Projet/ASD2_projet
+
+//Value Computed by CMake
 ASD2_projet_BINARY_DIR:STATIC=C:/Users/melvy/Desktop/Application/Drive/HEIG_VD/3em semestre/ASD2/Projet/ASD2_projet/cmake-build-debug
 
 //Value Computed by CMake
@@ -168,7 +174,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=ASD2_projet
+CMAKE_PROJECT_NAME:STATIC=ASD2_Labs_2020
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=C:/MinGW/bin/ranlib.exe

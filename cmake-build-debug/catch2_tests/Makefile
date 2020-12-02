@@ -75,17 +75,6 @@ CMAKE_BINARY_DIR = "C:\Users\melvy\Desktop\Application\Drive\HEIG_VD\3em semestr
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	"E:\Program Files\JetBrains\CLion 2019.3.3\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -96,6 +85,17 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	"E:\Program Files\JetBrains\CLion 2019.3.3\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -130,46 +130,19 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-catch2_tests/CMakeFiles/bst_tests_run.dir/rule:
-	cd /d C:\Users\melvy\Desktop\APPLIC~1\Drive\HEIG_VD\3EMSEM~1\ASD2\Projet\ASD2_P~1\CMAKE-~1 && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 catch2_tests/CMakeFiles/bst_tests_run.dir/rule
-.PHONY : catch2_tests/CMakeFiles/bst_tests_run.dir/rule
+catch2_tests/CMakeFiles/hashmap_tests_run.dir/rule:
+	cd /d C:\Users\melvy\Desktop\APPLIC~1\Drive\HEIG_VD\3EMSEM~1\ASD2\Projet\ASD2_P~1\CMAKE-~1 && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 catch2_tests/CMakeFiles/hashmap_tests_run.dir/rule
+.PHONY : catch2_tests/CMakeFiles/hashmap_tests_run.dir/rule
 
 # Convenience name for target.
-bst_tests_run: catch2_tests/CMakeFiles/bst_tests_run.dir/rule
+hashmap_tests_run: catch2_tests/CMakeFiles/hashmap_tests_run.dir/rule
 
-.PHONY : bst_tests_run
+.PHONY : hashmap_tests_run
 
 # fast build rule for target.
-bst_tests_run/fast:
-	cd /d C:\Users\melvy\Desktop\APPLIC~1\Drive\HEIG_VD\3EMSEM~1\ASD2\Projet\ASD2_P~1\CMAKE-~1 && $(MAKE) $(MAKESILENT) -f catch2_tests\CMakeFiles\bst_tests_run.dir\build.make catch2_tests/CMakeFiles/bst_tests_run.dir/build
-.PHONY : bst_tests_run/fast
-
-bstTest.obj: bstTest.cpp.obj
-
-.PHONY : bstTest.obj
-
-# target to build an object file
-bstTest.cpp.obj:
-	cd /d C:\Users\melvy\Desktop\APPLIC~1\Drive\HEIG_VD\3EMSEM~1\ASD2\Projet\ASD2_P~1\CMAKE-~1 && $(MAKE) $(MAKESILENT) -f catch2_tests\CMakeFiles\bst_tests_run.dir\build.make catch2_tests/CMakeFiles/bst_tests_run.dir/bstTest.cpp.obj
-.PHONY : bstTest.cpp.obj
-
-bstTest.i: bstTest.cpp.i
-
-.PHONY : bstTest.i
-
-# target to preprocess a source file
-bstTest.cpp.i:
-	cd /d C:\Users\melvy\Desktop\APPLIC~1\Drive\HEIG_VD\3EMSEM~1\ASD2\Projet\ASD2_P~1\CMAKE-~1 && $(MAKE) $(MAKESILENT) -f catch2_tests\CMakeFiles\bst_tests_run.dir\build.make catch2_tests/CMakeFiles/bst_tests_run.dir/bstTest.cpp.i
-.PHONY : bstTest.cpp.i
-
-bstTest.s: bstTest.cpp.s
-
-.PHONY : bstTest.s
-
-# target to generate assembly for a file
-bstTest.cpp.s:
-	cd /d C:\Users\melvy\Desktop\APPLIC~1\Drive\HEIG_VD\3EMSEM~1\ASD2\Projet\ASD2_P~1\CMAKE-~1 && $(MAKE) $(MAKESILENT) -f catch2_tests\CMakeFiles\bst_tests_run.dir\build.make catch2_tests/CMakeFiles/bst_tests_run.dir/bstTest.cpp.s
-.PHONY : bstTest.cpp.s
+hashmap_tests_run/fast:
+	cd /d C:\Users\melvy\Desktop\APPLIC~1\Drive\HEIG_VD\3EMSEM~1\ASD2\Projet\ASD2_P~1\CMAKE-~1 && $(MAKE) $(MAKESILENT) -f catch2_tests\CMakeFiles\hashmap_tests_run.dir\build.make catch2_tests/CMakeFiles/hashmap_tests_run.dir/build
+.PHONY : hashmap_tests_run/fast
 
 catch_main.obj: catch_main.cpp.obj
 
@@ -177,7 +150,7 @@ catch_main.obj: catch_main.cpp.obj
 
 # target to build an object file
 catch_main.cpp.obj:
-	cd /d C:\Users\melvy\Desktop\APPLIC~1\Drive\HEIG_VD\3EMSEM~1\ASD2\Projet\ASD2_P~1\CMAKE-~1 && $(MAKE) $(MAKESILENT) -f catch2_tests\CMakeFiles\bst_tests_run.dir\build.make catch2_tests/CMakeFiles/bst_tests_run.dir/catch_main.cpp.obj
+	cd /d C:\Users\melvy\Desktop\APPLIC~1\Drive\HEIG_VD\3EMSEM~1\ASD2\Projet\ASD2_P~1\CMAKE-~1 && $(MAKE) $(MAKESILENT) -f catch2_tests\CMakeFiles\hashmap_tests_run.dir\build.make catch2_tests/CMakeFiles/hashmap_tests_run.dir/catch_main.cpp.obj
 .PHONY : catch_main.cpp.obj
 
 catch_main.i: catch_main.cpp.i
@@ -186,7 +159,7 @@ catch_main.i: catch_main.cpp.i
 
 # target to preprocess a source file
 catch_main.cpp.i:
-	cd /d C:\Users\melvy\Desktop\APPLIC~1\Drive\HEIG_VD\3EMSEM~1\ASD2\Projet\ASD2_P~1\CMAKE-~1 && $(MAKE) $(MAKESILENT) -f catch2_tests\CMakeFiles\bst_tests_run.dir\build.make catch2_tests/CMakeFiles/bst_tests_run.dir/catch_main.cpp.i
+	cd /d C:\Users\melvy\Desktop\APPLIC~1\Drive\HEIG_VD\3EMSEM~1\ASD2\Projet\ASD2_P~1\CMAKE-~1 && $(MAKE) $(MAKESILENT) -f catch2_tests\CMakeFiles\hashmap_tests_run.dir\build.make catch2_tests/CMakeFiles/hashmap_tests_run.dir/catch_main.cpp.i
 .PHONY : catch_main.cpp.i
 
 catch_main.s: catch_main.cpp.s
@@ -195,8 +168,35 @@ catch_main.s: catch_main.cpp.s
 
 # target to generate assembly for a file
 catch_main.cpp.s:
-	cd /d C:\Users\melvy\Desktop\APPLIC~1\Drive\HEIG_VD\3EMSEM~1\ASD2\Projet\ASD2_P~1\CMAKE-~1 && $(MAKE) $(MAKESILENT) -f catch2_tests\CMakeFiles\bst_tests_run.dir\build.make catch2_tests/CMakeFiles/bst_tests_run.dir/catch_main.cpp.s
+	cd /d C:\Users\melvy\Desktop\APPLIC~1\Drive\HEIG_VD\3EMSEM~1\ASD2\Projet\ASD2_P~1\CMAKE-~1 && $(MAKE) $(MAKESILENT) -f catch2_tests\CMakeFiles\hashmap_tests_run.dir\build.make catch2_tests/CMakeFiles/hashmap_tests_run.dir/catch_main.cpp.s
 .PHONY : catch_main.cpp.s
+
+hashMapTest.obj: hashMapTest.cpp.obj
+
+.PHONY : hashMapTest.obj
+
+# target to build an object file
+hashMapTest.cpp.obj:
+	cd /d C:\Users\melvy\Desktop\APPLIC~1\Drive\HEIG_VD\3EMSEM~1\ASD2\Projet\ASD2_P~1\CMAKE-~1 && $(MAKE) $(MAKESILENT) -f catch2_tests\CMakeFiles\hashmap_tests_run.dir\build.make catch2_tests/CMakeFiles/hashmap_tests_run.dir/hashMapTest.cpp.obj
+.PHONY : hashMapTest.cpp.obj
+
+hashMapTest.i: hashMapTest.cpp.i
+
+.PHONY : hashMapTest.i
+
+# target to preprocess a source file
+hashMapTest.cpp.i:
+	cd /d C:\Users\melvy\Desktop\APPLIC~1\Drive\HEIG_VD\3EMSEM~1\ASD2\Projet\ASD2_P~1\CMAKE-~1 && $(MAKE) $(MAKESILENT) -f catch2_tests\CMakeFiles\hashmap_tests_run.dir\build.make catch2_tests/CMakeFiles/hashmap_tests_run.dir/hashMapTest.cpp.i
+.PHONY : hashMapTest.cpp.i
+
+hashMapTest.s: hashMapTest.cpp.s
+
+.PHONY : hashMapTest.s
+
+# target to generate assembly for a file
+hashMapTest.cpp.s:
+	cd /d C:\Users\melvy\Desktop\APPLIC~1\Drive\HEIG_VD\3EMSEM~1\ASD2\Projet\ASD2_P~1\CMAKE-~1 && $(MAKE) $(MAKESILENT) -f catch2_tests\CMakeFiles\hashmap_tests_run.dir\build.make catch2_tests/CMakeFiles/hashmap_tests_run.dir/hashMapTest.cpp.s
+.PHONY : hashMapTest.cpp.s
 
 # Help Target
 help:
@@ -206,13 +206,13 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... bst_tests_run
-	@echo ... bstTest.obj
-	@echo ... bstTest.i
-	@echo ... bstTest.s
+	@echo ... hashmap_tests_run
 	@echo ... catch_main.obj
 	@echo ... catch_main.i
 	@echo ... catch_main.s
+	@echo ... hashMapTest.obj
+	@echo ... hashMapTest.i
+	@echo ... hashMapTest.s
 .PHONY : help
 
 
