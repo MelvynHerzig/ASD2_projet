@@ -1,0 +1,6 @@
+C:/Users/melvy/Desktop/Application/Drive/HEIG_VD/3em semestre/ASD2/Projet/ASD2_projet/cmake-build-debug/CMakeFiles/ASD2_projet.dir
+C:/Users/melvy/Desktop/Application/Drive/HEIG_VD/3em semestre/ASD2/Projet/ASD2_projet/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/melvy/Desktop/Application/Drive/HEIG_VD/3em semestre/ASD2/Projet/ASD2_projet/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/melvy/Desktop/Application/Drive/HEIG_VD/3em semestre/ASD2/Projet/ASD2_projet/cmake-build-debug/catch2_tests/CMakeFiles/bst_tests_run.dir
+C:/Users/melvy/Desktop/Application/Drive/HEIG_VD/3em semestre/ASD2/Projet/ASD2_projet/cmake-build-debug/catch2_tests/CMakeFiles/edit_cache.dir
+C:/Users/melvy/Desktop/Application/Drive/HEIG_VD/3em semestre/ASD2/Projet/ASD2_projet/cmake-build-debug/catch2_tests/CMakeFiles/rebuild_cache.dir

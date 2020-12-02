@@ -1,0 +1,12 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/melvy/Desktop/Application/Drive/HEIG_VD/3em semestre/ASD2/Projet/ASD2_projet/main.cpp
+iostream
+-
+
