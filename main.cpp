@@ -3,14 +3,15 @@
 //
 
 #include <iostream> // std::cout, std::endl
-#include <iomanip> // std::boolalpha
+#include <string>   // std::string
 #include "HashMapChain.h"
+#include "HashMapLinearSample.h"
 
 using namespace std;
 
 int main ()
 {
-   HashMapChain<int> hm {8};
+//   HashMapChain<int> hm {8};
 //
 //   cout << "taille " << hm.size() << endl;
 //
@@ -27,16 +28,32 @@ int main ()
 //   hm.erase(5);
 //
 //   cout << "taille " << hm.size() << endl;
-
+//
 //   for (int i = 0; i < 16; ++i)
 //   {
 //      cout << "nb Elem " << hm.size() << endl;
-//      cout << "taille de la table " << hm.size2() << endl;
+//      cout << "taille de la table " << hm.tableSize() << endl;
 //      hm.insert(i);
 //   }
 
-   cout << "nb Elem " << hm.size() << endl;
-   cout << "taille de la table " << hm.size2() << endl;
+   HashMapLinearSample<int> hm{4};
+   for (int i = 0; i < 4; ++i)
+   {
+      cout << "nb Elem " << hm.size() << endl;
+      cout << "taille de la table " << hm.tableSize() << endl;
+      hm.insert(i);
+      cout <<  endl;
+   }
 
+   for (int i = 0; i < 3; ++i)
+   {
+      cout << "nb Elem " << hm.size() << endl;
+      cout << "taille de la table " << hm.tableSize() << endl;
+      hm.erase(i);
+      cout <<  endl;
+   }
+
+   cout << "nb Elem " << hm.size() << endl;
+   cout << "taille de la table " << hm.tableSize() << endl;
    return 0;
 }

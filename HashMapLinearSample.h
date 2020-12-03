@@ -5,130 +5,156 @@
 #ifndef ASD2_LABS_2020_HASHMAPLINEARSAMPLE_H
 #define ASD2_LABS_2020_HASHMAPLINEARSAMPLE_H
 
-#include "HashMapWrapper.h"
+#include "HashMapCommon.h"
 #include <vector>    // std::vector<std::list<Key>>
 
+/*
+ * @Brief Classe définissant une table de hachage selon le principe de sondage linéaire.
+ *        La fonction std::hash doit être définie pour le type de Key sinon passer
+ *        une fonction personnalisé. De même, == doit être défini pour Key.
+ */
 template<class Key, class Hash = std::hash<Key>, class Pred = std::equal_to<Key>>
-class HashMapChain : public HashMapWrapper<Key, Hash, Pred>
+class HashMapLinearSample : public HashMapCommon<Key, Hash, Pred>
 {
 private:
+   typedef HashMapCommon<Key, Hash, Pred> super;
 
-   int nbElem;
-   std::vector<Key> hmap;
-   bool canBeResized;
-
-   typedef HashMapWrapper<Key, Hash, Pred> BASE;
-
-   size_t getPos (const Key &key)
-   {
-      return BASE::hash(key) % hmap.size();
-   }
+   std::vector<const Key *> hmap;
 
 public:
 
-   HashMapChain (size_t length = 0)
+   /**
+    * @brief Constructeur. Dimensionne la table de hachage selon length.
+    * @param length Par défaut vaut 1.
+    */
+   HashMapLinearSample (size_t length = 1) : HashMapCommon<Key, Hash, Pred>(0.125, 0.5)
    {
       hmap.resize(length);
-      nbElem = 0;
-      canBeResized = true;
    }
 
+   /**
+    * @brief Destructeur. Réallou la mémoire associé a la table de hachage.
+    */
+   ~HashMapLinearSample()
+   {
+      for (int i = 0; i < hmap.size(); ++i)
+      {
+         if (hmap[i] != nullptr)
+         {
+            insert(*hmap[i]);
+            delete hmap[i];
+            hmap[i] = nullptr;
+         }
+      }
+   }
+
+   /**
+    * @brief Permet d'ajouter la clé dans la table de hachage, sans effet si présente.
+    * @param key Clé à ajouter.
+    */
    void insert (const Key &key)
    {
-      size_t pos = getPos(key);
+      size_t pos = super::getPos(key, hmap.size());
+
+      // We look for next empty cell
       if (!contains(key))
       {
-         hmap[pos].push_back(key);
-         ++nbElem;
+         while (hmap[pos] != nullptr)
+         {
+            pos = (pos + 1) % hmap.size();
+         }
+
+         hmap[pos] = new Key(key);
+         ++super::nbElem;
       }
 
-      checkDistribution();
-   };
+      super::checkDistribution(hmap.size());
+   }
 
+   /**
+    * @brief Vérifie si la clé est contenue dans la table de hachage.
+    * @param key Clé à vérifier.
+    * @return Vrai si la clé est présente sinon faux.
+    */
    bool contains (const Key &key)
    {
-      size_t pos = getPos(key);
-
-      while
-      if (it != hmap[pos].end())
+      if (find(key) > 0)
       { return true; }
 
       return false;
-   };
+   }
 
+   /**
+    * @brief Supprime la clé de la table de hachage si elle est présente, sans effet sinon.
+    * @param key Clé a retirer.
+    */
    void erase (const Key &key)
    {
-      size_t pos = getPos(key);
-
-      CListIterator it = find(key);
-      if (it != hmap[pos].end())
+      int pos = find(key);
+      if (pos >= 0)
       {
-         hmap[pos].erase(it);
-         --nbElem;
+         delete hmap[pos];
+         hmap[pos] = nullptr;
+         --super::nbElem;
       }
 
-      checkDistribution ();
-   };
+      super::checkDistribution(hmap.size());
+   }
 
-   size_t size ()
-   {
-      return nbElem;
-   };
-
-   size_t size2 ()
+   /**
+    * @return Retourne la taille de la table de hachage.
+    */
+   size_t tableSize ()
    {
       return hmap.size();
-   };
+   }
 
 private:
 
-   CListIterator find (const Key &key)
+   /**
+    * @Brief Calcule la position d'une clé dans la table de hachage.
+    * @param key Clé a rechercher
+    * @return Retourne la position de la clé si existante sinon -1.
+    */
+   int find (const Key &key)
    {
-      size_t pos = getPos(key);
+      size_t pos = super::getPos(key, hmap.size());
 
-      for (auto it = hmap[pos].begin(); it != hmap[pos].end(); ++it)
+      while (hmap[pos] != nullptr && pos < hmap.size())
       {
-         if (BASE::pred(*it,key))
-         { return it; }
+         if (super::pred(*hmap[pos], key))
+         {
+            return pos;
+         }
+         ++pos;
       }
 
-      return hmap[pos].end();
+      return -1;
    }
 
-   void checkDistribution ()
-   {
-      if(!canBeResized) return;
-
-      double ratio = (double)nbElem / (double)hmap.size();
-
-      if (ratio >= 8)
-      {
-         resize(hmap.size() * 2);
-      }
-
-      if (ratio <= 2)
-      {
-         resize(std::ceil((double)hmap.size() / (double)2));
-      }
-   }
-
+   /**
+    * @brief Redimensionne la table de hachage avec la nouvelle taille.
+    * @param newSize Nouvelle taille à appliquer à la table de hachage.
+    */
    void resize (size_t newSize)
    {
-      std::vector<std::list<Key>> tempHmap = std::vector<std::list<Key>>{newSize};
+      std::vector<const Key *> tempHmap = std::vector<const Key *>{newSize};
       hmap.swap(tempHmap);
-      nbElem = 0;
+      super::nbElem = 0;
 
-      canBeResized = false;
+      super::canBeResized = false;
 
-      for(int i = 0; i < tempHmap.size(); ++i)
+      for (int i = 0; i < tempHmap.size(); ++i)
       {
-         for(const Key& key : tempHmap[i])
+         if (tempHmap[i] != nullptr)
          {
-            insert(key);
+            insert(*tempHmap[i]);
+            delete tempHmap[i];
+            tempHmap[i] = nullptr;
          }
       }
 
-      canBeResized = true;
+      super::canBeResized = true;
    }
 };
 

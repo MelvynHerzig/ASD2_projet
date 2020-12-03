@@ -1,5 +1,5 @@
 #include "catch.hpp"
-#include "../HashMapWrapper.h"
+#include "../HashMapCommon.h"
 
 using namespace std;
 
@@ -9,7 +9,7 @@ using namespace std;
 
 TEST_CASE("Tests", "[hashmap]")
 {
-    HashMapWrapper<int> hashMapWrapper;
+    HashMapCommon<int> hashMapWrapper;
 
     SECTION("Empty hashMap")
     {
