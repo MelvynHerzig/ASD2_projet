@@ -26,12 +26,11 @@ private:
 public:
 
    /**
-    * @brief Constructeur. Dimensionne la table de hachage selon length.
-    * @param length Par défaut vaut 1.
+    * @brief Constructeur. Mise en place des structure de stockages
     */
-   HashMapChain (size_t length = 1) : HashMapCommon<Key, Hash, Pred>(2,8)
+   HashMapChain () : HashMapCommon<Key, Hash, Pred>(2,8)
    {
-      hmap.resize(length);
+      hmap.resize(1);
    }
 
    /**

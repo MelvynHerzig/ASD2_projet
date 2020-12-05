@@ -36,7 +36,7 @@ int main ()
 //      hm.insert(i);
 //   }
 
-   HashMapLinearSample<int> hm{4};
+   HashMapLinearSample<int> hm;
    for (int i = 0; i < 4; ++i)
    {
       cout << "nb Elem " << hm.size() << endl;
