@@ -144,6 +144,33 @@ hashmap_tests_run/fast:
 	cd /d C:\Users\melvy\Desktop\APPLIC~1\Drive\HEIG_VD\3EMSEM~1\ASD2\Projet\ASD2_P~1\CMAKE-~1 && $(MAKE) $(MAKESILENT) -f catch2_tests\CMakeFiles\hashmap_tests_run.dir\build.make catch2_tests/CMakeFiles/hashmap_tests_run.dir/build
 .PHONY : hashmap_tests_run/fast
 
+__/Person.obj: __/Person.cpp.obj
+
+.PHONY : __/Person.obj
+
+# target to build an object file
+__/Person.cpp.obj:
+	cd /d C:\Users\melvy\Desktop\APPLIC~1\Drive\HEIG_VD\3EMSEM~1\ASD2\Projet\ASD2_P~1\CMAKE-~1 && $(MAKE) $(MAKESILENT) -f catch2_tests\CMakeFiles\hashmap_tests_run.dir\build.make catch2_tests/CMakeFiles/hashmap_tests_run.dir/__/Person.cpp.obj
+.PHONY : __/Person.cpp.obj
+
+__/Person.i: __/Person.cpp.i
+
+.PHONY : __/Person.i
+
+# target to preprocess a source file
+__/Person.cpp.i:
+	cd /d C:\Users\melvy\Desktop\APPLIC~1\Drive\HEIG_VD\3EMSEM~1\ASD2\Projet\ASD2_P~1\CMAKE-~1 && $(MAKE) $(MAKESILENT) -f catch2_tests\CMakeFiles\hashmap_tests_run.dir\build.make catch2_tests/CMakeFiles/hashmap_tests_run.dir/__/Person.cpp.i
+.PHONY : __/Person.cpp.i
+
+__/Person.s: __/Person.cpp.s
+
+.PHONY : __/Person.s
+
+# target to generate assembly for a file
+__/Person.cpp.s:
+	cd /d C:\Users\melvy\Desktop\APPLIC~1\Drive\HEIG_VD\3EMSEM~1\ASD2\Projet\ASD2_P~1\CMAKE-~1 && $(MAKE) $(MAKESILENT) -f catch2_tests\CMakeFiles\hashmap_tests_run.dir\build.make catch2_tests/CMakeFiles/hashmap_tests_run.dir/__/Person.cpp.s
+.PHONY : __/Person.cpp.s
+
 catch_main.obj: catch_main.cpp.obj
 
 .PHONY : catch_main.obj
@@ -207,6 +234,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... hashmap_tests_run
+	@echo ... __/Person.obj
+	@echo ... __/Person.i
+	@echo ... __/Person.s
 	@echo ... catch_main.obj
 	@echo ... catch_main.i
 	@echo ... catch_main.s

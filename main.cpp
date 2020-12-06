@@ -6,6 +6,7 @@
 #include <string>   // std::string
 #include "HashMapChain.h"
 #include "HashMapLinearSample.h"
+#include "Person.h"
 
 using namespace std;
 
@@ -36,24 +37,29 @@ int main ()
 //      hm.insert(i);
 //   }
 
-   HashMapLinearSample<int> hm;
-   for (int i = 0; i < 4; ++i)
-   {
-      cout << "nb Elem " << hm.size() << endl;
-      cout << "taille de la table " << hm.tableSize() << endl;
-      hm.insert(i);
-      cout <<  endl;
-   }
+//   HashMapLinearSample<int> hm;
+//   for (int i = 0; i < 4; ++i)
+//   {
+//      cout << "nb Elem " << hm.size() << endl;
+//      cout << "taille de la table " << hm.tableSize() << endl;
+//      hm.insert(i);
+//      cout <<  endl;
+//   }
+//
+//   for (int i = 0; i < 3; ++i)
+//   {
+//      cout << "nb Elem " << hm.size() << endl;
+//      cout << "taille de la table " << hm.tableSize() << endl;
+//      hm.erase(i);
+//      cout <<  endl;
+//   }
+//
+//   cout << "nb Elem " << hm.size() << endl;
+//   cout << "taille de la table " << hm.tableSize() << endl
 
-   for (int i = 0; i < 3; ++i)
-   {
-      cout << "nb Elem " << hm.size() << endl;
-      cout << "taille de la table " << hm.tableSize() << endl;
-      hm.erase(i);
-      cout <<  endl;
-   }
-
-   cout << "nb Elem " << hm.size() << endl;
-   cout << "taille de la table " << hm.tableSize() << endl;
+//3847896477 - 3847896477
+//   Person melvyn = {"Herzig", "Melvyn", "Male", "11.09.1993"};
+//   hash<Person> person_hash;
+//   cout << person_hash(melvyn) << endl;
    return 0;
 }

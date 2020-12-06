@@ -155,6 +155,33 @@ hashmap_tests_run/fast:
 	$(MAKE) $(MAKESILENT) -f catch2_tests\CMakeFiles\hashmap_tests_run.dir\build.make catch2_tests/CMakeFiles/hashmap_tests_run.dir/build
 .PHONY : hashmap_tests_run/fast
 
+Person.obj: Person.cpp.obj
+
+.PHONY : Person.obj
+
+# target to build an object file
+Person.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\hashmap_main.dir\build.make CMakeFiles/hashmap_main.dir/Person.cpp.obj
+.PHONY : Person.cpp.obj
+
+Person.i: Person.cpp.i
+
+.PHONY : Person.i
+
+# target to preprocess a source file
+Person.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\hashmap_main.dir\build.make CMakeFiles/hashmap_main.dir/Person.cpp.i
+.PHONY : Person.cpp.i
+
+Person.s: Person.cpp.s
+
+.PHONY : Person.s
+
+# target to generate assembly for a file
+Person.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\hashmap_main.dir\build.make CMakeFiles/hashmap_main.dir/Person.cpp.s
+.PHONY : Person.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -192,6 +219,9 @@ help:
 	@echo ... rebuild_cache
 	@echo ... hashmap_main
 	@echo ... hashmap_tests_run
+	@echo ... Person.obj
+	@echo ... Person.i
+	@echo ... Person.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
