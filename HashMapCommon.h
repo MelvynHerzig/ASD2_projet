@@ -66,18 +66,19 @@ public:
       return nbElem;
    }
 
+protected:
+
    /**
     * @Brief Pour une longueur de hashMap donnée, spécifie ou insérer la clé.
     * @param key Clé à insérer.
     * @param hmapSize Longueur de la hmapAssocié.
     * @return Position correspondant au hachage dans la hmap associée.
     */
+
    size_t getPos (const Key &key, size_t hmapSize)
    {
       return hash(key) % hmapSize;
    }
-
-protected:
 
    /**
     * @brief Pour une table de hachage, vérifie si elle doit être redimensionnée.
