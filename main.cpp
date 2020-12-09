@@ -12,7 +12,7 @@ using namespace std;
 
 int main ()
 {
-//   HashMapChain<int> hm {8};
+//   HashMapChain<int> hm {2};
 //
 //   cout << "taille " << hm.size() << endl;
 //
@@ -32,12 +32,23 @@ int main ()
 //
 //   for (int i = 0; i < 16; ++i)
 //   {
+//      hm.insert(i);
+//      cout << "-------------------------------" << endl;
 //      cout << "nb Elem " << hm.size() << endl;
 //      cout << "taille de la table " << hm.tableSize() << endl;
-//      hm.insert(i);
+//      cout << (double)hm.size() /  hm.tableSize() << endl;
+//   }
+//
+//   for (int i = 0; i < 16; ++i)
+//   {
+//      hm.erase(i);
+//      cout << "-------------------------------" << endl;
+//      cout << "nb Elem " << hm.size() << endl;
+//      cout << "taille de la table " << hm.tableSize() << endl;
+//      cout << (double)hm.size() /  hm.tableSize() << endl;
 //   }
 
-//   HashMapLinearSample<int> hm;
+//   HashMapLinearSample<int> hm{4};
 //   for (int i = 0; i < 4; ++i)
 //   {
 //      cout << "nb Elem " << hm.size() << endl;
@@ -55,7 +66,7 @@ int main ()
 //   }
 //
 //   cout << "nb Elem " << hm.size() << endl;
-//   cout << "taille de la table " << hm.tableSize() << endl
+//   cout << "taille de la table " << hm.tableSize() << endl;
 
 //3847896477 - 3847896477
 //   Person melvyn = {"Herzig", "Melvyn", "Male", "11.09.1993"};

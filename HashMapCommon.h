@@ -8,6 +8,8 @@
 #include <functional> // hash<Key>, equal_to<Key>
 #include <cmath>     // std::ceil
 
+enum hash_operation{ INSERTION, DELETION};
+
 /*
  * @Brief Classe englobante des methodes communes a définir et attributs communs
  *        aux classe HashMapLinearSample et HashMapChain.
@@ -23,7 +25,6 @@ protected:
    Pred pred;  // Fonction d'égalité
 
    size_t nbElem;     // # d'éléments stockés dans la table de hachage
-   bool canBeResized; // si faux, désactive le processus de redimensionnement.
 
    const double REDUCT_AT;  // Ratio au dessous du quel réduir la taille de la table
    const double AUGMENT_AT; // Ratio au dessus du quel augmenter la taille de la table.
@@ -36,7 +37,6 @@ public:
    HashMapCommon (double reduct, double augment) : REDUCT_AT(reduct), AUGMENT_AT(augment)
    {
       nbElem = 0;
-      canBeResized = true;
    }
 
    /**
@@ -83,21 +83,18 @@ protected:
     * @brief Pour une table de hachage, vérifie si elle doit être redimensionnée.
     *        Appel resize si tel est le cas.
     */
-   void checkDistribution (size_t hmapsize)
+   void checkDistribution (size_t hmapsize, hash_operation operation)
    {
-      if (!canBeResized)
-      { return; }
-
       double ratio = (double) nbElem / (double) hmapsize;
 
       if (ratio >= AUGMENT_AT)
       {
-         resize(hmapsize * 2);
+         if(operation == INSERTION) resize(hmapsize * 2);
       }
 
       if (ratio <= REDUCT_AT)
       {
-         resize(std::ceil((double) hmapsize / (double) 2));
+         if(operation == DELETION) resize(std::ceil((double) hmapsize / (double) 2));
       }
    }
 

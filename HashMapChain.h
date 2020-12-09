@@ -25,12 +25,13 @@ private:
 
 public:
 
-   /**
-    * @brief Constructeur. Mise en place des structure de stockages
-    */
-   HashMapChain () : HashMapCommon<Key, Hash, Pred>(2,8)
+    /**
+     * @brief Constructeur. Mise en place des structure de stockages
+     * @param length Hash map length
+     */
+   HashMapChain (size_t length = 1) : HashMapCommon<Key, Hash, Pred>(2,8)
    {
-      hmap.resize(1);
+      hmap.resize(length);
    }
 
    /**
@@ -46,7 +47,7 @@ public:
          ++super::nbElem;
       }
 
-      super::checkDistribution(hmap.size());
+      super::checkDistribution(hmap.size(), INSERTION);
    }
 
    /**
@@ -80,7 +81,7 @@ public:
          --super::nbElem;
       }
 
-      super::checkDistribution(hmap.size());
+      super::checkDistribution(hmap.size(), DELETION);
    }
 
    /**
@@ -121,8 +122,6 @@ private:
       hmap.swap(tempHmap);
       super::nbElem = 0;
 
-      super::canBeResized = false;
-
       for (int i = 0; i < tempHmap.size(); ++i)
       {
          for (const Key &key : tempHmap[i])
@@ -130,8 +129,6 @@ private:
             insert(key);
          }
       }
-
-      super::canBeResized = true;
    }
 
 };
