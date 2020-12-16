@@ -17,8 +17,10 @@ int main ()
 
    // Changer la localisation du fichier dictionnaire.
    string dictionnary = "..\\data\\dictionary.txt";
+   string input = "..\\data\\input_lates.txt";
 
    Corrector<Container> corrector(dictionnary);
+   corrector.correctFile(input);
 
    return 0;
 }
