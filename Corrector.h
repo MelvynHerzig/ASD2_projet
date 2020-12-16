@@ -11,6 +11,7 @@
 #include <sstream>    // std::stringstream
 #include <algorithm>  // std::count
 #include <chrono>     // std::chrono
+#include <vector>     // std::vector
 
 /**
  * @brief Classe simulant un correcteur orthographique.
@@ -35,41 +36,64 @@ public:
 
    void correctFile(const std::string& filename)
    {
-      std::string output = "..\\data\\corrections.txt";
+      std::string output = createOutFilename(filename);
 
-      //splitFilePath(filename, output);
-
-     // std::ifstream inputs(filename);
+      std::ifstream inputs(filename);
       std::string word;
 
       std::ofstream outputs;
-      outputs.open(output, std::ofstream::app);
+      outputs.open(output, std::ofstream::trunc);
 
-      if(outputs.is_open())
+
+      while(inputs.good())
       {
-         std::cout << "OUVRE TOI ENCULE" << std::endl;
+         inputs >> word;
+         correctString(word);
+
+         if(!dictionary.contains(word))
+         {
+            std::vector<std::string> variations;
+            unsigned correctionsCount = 0;
+
+            outputs << '*' + word << std::endl;
+
+            // Mots avec une lettre en moins
+            for(size_t i = 0; i < word.size(); ++i)
+            {
+               std::string variation = word;
+               variations.push_back(variation.erase(i, 1));
+            }
+
+            // Mots avec une lettre en plus
+            for(size_t i = 0; i <= word.size(); ++i)
+            {
+               for(char c = 'a'; c <= 'z' ; ++c)
+               {
+                  std::string variation = word;
+                  variations.push_back(variation.insert(i, 1, c));
+               }
+            }
+
+            // Mots avec une lettre modifiées
+            for(size_t i = 0; i < word.size(); ++i)
+            {
+               for(char c = 'a'; c <= 'z' ; ++c)
+               {
+                  std::string variation = word;
+                  if(c != word[i])
+                     variations.push_back(variation.replace(i, 1,1, c));
+               }
+            }
+
+            // Mot avec deux lettres échangées
+
+            for(const std::string& variation : variations)
+            {
+               if(dictionary.contains(variation))
+                  outputs << ++correctionsCount << ":" << variation << std::endl;
+            }
+         }
       }
-
-//      while(inputs.good())
-//      {
-//         inputs >> word;
-//         correctString(word);
-//
-//         if(!dictionary.contains(word))
-//         {
-//            outputs << '*' + word;
-//            // Mots avec une lettre en moins
-//
-//            // Mots avec une lettre en plus
-//
-//            // Mots avec une lettre modifiées
-//         }
-//      }
-
-      outputs << "Tamer";
-
-      //inputs.close();
-      outputs.close();
    }
 
 private:
@@ -138,18 +162,18 @@ private:
        return count;
     }
 
-    void splitFilePath(const std::string& inputFile, std::string& outfilename)
+    std::string createOutFilename(const std::string& inputFile)
     {
        char delimiter = '\\';
        size_t namePos = inputFile.rfind(delimiter);
        std::string path = ".\\";
-       outfilename = "Corrections_";
+       std::string outfilename = "Corrections_";
        if(namePos != std::string::npos)
        {
           path = inputFile.substr(0,namePos+1);
        }
 
-       outfilename = path + outfilename + inputFile.substr(namePos+1);
+       return outfilename = path + outfilename + inputFile.substr(namePos+1);
     }
 };
 

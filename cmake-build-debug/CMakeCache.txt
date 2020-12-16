@@ -20,12 +20,6 @@ ASD2_Labs_2020_BINARY_DIR:STATIC=C:/Users/melvy/Desktop/Application/Drive/HEIG_V
 //Value Computed by CMake
 ASD2_Labs_2020_SOURCE_DIR:STATIC=C:/Users/melvy/Desktop/Application/Drive/HEIG_VD/3em semestre/ASD2/Projet/ASD2_projet
 
-//Value Computed by CMake
-ASD2_projet_BINARY_DIR:STATIC=C:/Users/melvy/Desktop/Application/Drive/HEIG_VD/3em semestre/ASD2/Projet/ASD2_projet/cmake-build-debug
-
-//Value Computed by CMake
-ASD2_projet_SOURCE_DIR:STATIC=C:/Users/melvy/Desktop/Application/Drive/HEIG_VD/3em semestre/ASD2/Projet/ASD2_projet
-
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=C:/MinGW/bin/addr2line.exe
 
@@ -130,7 +124,7 @@ CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 CMAKE_GNUtoMS:BOOL=OFF
 
 //Install path prefix, prepended onto install directories.
-CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/ASD2_projet
+CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/ASD2_Labs_2020
 
 //Path to a program.
 CMAKE_LINKER:FILEPATH=C:/MinGW/bin/ld.exe
