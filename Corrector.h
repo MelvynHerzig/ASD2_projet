@@ -6,12 +6,11 @@
 #define ASD2_LABS_2020_CORRECTOR_H
 
 #include <string>     // std::string
-#include <cctype>     // std::tolower, std::isalpha
+#include <cctype>     // std::tolower
 #include <fstream>    // std::ifstream std::ofstream
 #include <sstream>    // std::stringstream
-#include <algorithm>  // std::count
+#include <algorithm>  // std::count, std::find
 #include <chrono>     // std::chrono
-#include <vector>     // std::vector
 
 /**
  * @brief Classe simulant un correcteur orthographique.
@@ -24,11 +23,19 @@ class Corrector
 {
 private:
 
+   // Jeu de caractères autorisés
+   static const size_t CHARSET_LENGTH = 27;
+   const char charset[CHARSET_LENGTH] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','\''};
+
    std::string dictionaryFilename;
    Container dictionary;
 
 public:
 
+   /**
+    * Constructeur
+    * @param dictionaryFile Nom du fichier dictionnaire à lire et charger.
+    */
    Corrector(const std::string& dictionaryFile): dictionaryFilename(dictionaryFile), dictionary(countDictionaryWord())
    {
       loadDictionary();
@@ -49,54 +56,22 @@ public:
       {
          inputs >> word;
          correctString(word);
-
-         if(!dictionary.contains(word))
+         if(word != "" && !dictionary.contains(word))
          {
-            std::vector<std::string> variations;
-            unsigned correctionsCount = 0;
-
             outputs << '*' + word << std::endl;
 
-            // Mots avec une lettre en moins
-            for(size_t i = 0; i < word.size(); ++i)
-            {
-               std::string variation = word;
-               variations.push_back(variation.erase(i, 1));
-            }
-
-            // Mots avec une lettre en plus
-            for(size_t i = 0; i <= word.size(); ++i)
-            {
-               for(char c = 'a'; c <= 'z' ; ++c)
-               {
-                  std::string variation = word;
-                  variations.push_back(variation.insert(i, 1, c));
-               }
-            }
-
-            // Mots avec une lettre modifiées
-            for(size_t i = 0; i < word.size(); ++i)
-            {
-               for(char c = 'a'; c <= 'z' ; ++c)
-               {
-                  std::string variation = word;
-                  if(c != word[i])
-                     variations.push_back(variation.replace(i, 1,1, c));
-               }
-            }
-
-            // Mot avec deux lettres échangées
-
-            for(const std::string& variation : variations)
-            {
-               if(dictionary.contains(variation))
-                  outputs << ++correctionsCount << ":" << variation << std::endl;
-            }
+            tryOneLetterLess(word, outputs);
+            tryOneLetterMore(word, outputs);
+            tryOneLetterChanged(word, outputs);
+            tryTwoLettersSwapped(word, outputs);
          }
       }
+      outputs.close();
+      inputs.close();
    }
 
 private:
+
    /**
     * @brief Corrige un mot pour utiliser le correcteur.
     * @param word Mot à corriger.
@@ -105,18 +80,17 @@ private:
    {
       for(size_t i = 0; i < word.size(); ++i)
       {
-         char c = word[i];
-         if( not( isalpha(c) || c == '\'') )
+         word[i] = tolower(word[i]);
+         if(  std::find(charset, charset + CHARSET_LENGTH, word[i]) == (charset + CHARSET_LENGTH))
          {
             word.erase(i, 1);
+            --i;
          }
-
-         word[i] = tolower(word[i]);
       }
    }
 
     /**
-    * @brief Rempli le container avec les mot du dictionnaire.
+    * @brief Rempli le container avec les mots du dictionnaire.
     */
     void loadDictionary()
     {
@@ -162,6 +136,13 @@ private:
        return count;
     }
 
+    /**
+     * Pour un chemin Windows du fichier input, créer le fichier output.
+     * Le fichier de sortie sera au même endroit que le fichier d'entrée.
+     * Le fichier de sortie sera de la forme "Corrections_<nom du fichier d'entrée>"
+     * @param inputFile Chemin et nom du fichier d'entrée.
+     * @return Retourne le chemin et le nom du fichier de sortie.
+     */
     std::string createOutFilename(const std::string& inputFile)
     {
        char delimiter = '\\';
@@ -175,6 +156,94 @@ private:
 
        return outfilename = path + outfilename + inputFile.substr(namePos+1);
     }
+
+    /**
+     * Génère les mots avec une lettre en moins et vérifie si ils appartiennent au dictionnaire.
+     * Si telle est le cas, la suggestion est écrite dans le flux outputs.
+     * @param word Mot à tenter les variations.
+     * @param outputs Flux de sortie.
+     */
+    size_t tryOneLetterLess(const std::string word, std::ofstream& outputs)
+    {
+       std::string wordCopy;
+
+       for(size_t i = 0; i < word.size(); ++i)
+       {
+          wordCopy = word;
+          wordCopy.erase(i, 1);
+
+          if(dictionary.contains(wordCopy))
+             outputs << 1 << ":" << wordCopy << std::endl;
+       }
+    }
+
+    /**
+     * Génère les mots avec une lettre en plus et vérifie si ils appartiennent au dictionnaire.
+     * Si telle est le cas, la suggestion est écrite dans le flux outputs.
+     * @param word Mot à tenter les variations.
+     * @param outputs Flux de sortie.
+     */
+    size_t tryOneLetterMore(const std::string word, std::ofstream& outputs)
+    {
+       std::string wordCopy;
+
+       for(size_t i = 0; i <= word.size(); ++i)
+       {
+          for(size_t c = 0; c < CHARSET_LENGTH; ++c)
+          {
+             wordCopy = word;
+             wordCopy.insert(i, 1, charset[c]);
+
+             if(dictionary.contains(wordCopy))
+                outputs << 2 << ":" << wordCopy << std::endl;
+          }
+       }
+   }
+
+   /**
+     * Génère les mots avec une lettre modifiée et vérifie si ils appartiennent au dictionnaire.
+     * Si telle est le cas, la suggestion est écrite dans le flux outputs.
+     * @param word Mot à tenter les variations.
+     * @param outputs Flux de sortie.
+     */
+   size_t tryOneLetterChanged(const std::string word, std::ofstream& outputs)
+   {
+      std::string wordCopy;
+
+      for(size_t i = 0; i < word.size(); ++i)
+      {
+         for(size_t c = 0; c < CHARSET_LENGTH; ++c)
+         {
+            wordCopy = word;
+            if(charset[c] != word[i])
+               wordCopy.replace(i, 1,1, charset[c]);
+
+            if(dictionary.contains(wordCopy))
+               outputs << '3' << ":" << wordCopy << std::endl;
+         }
+      }
+   }
+
+   /**
+     * Génère les mots avec deux lettres adjacentes échangées et vérifie si ils appartiennent au dictionnaire.
+     * Si telle est le cas, la suggestion est écrite dans le flux outputs.
+     * @param word Mot à tenter les variations.
+     * @param outputs Flux de sortie.
+     */
+   void tryTwoLettersSwapped(const std::string word, std::ofstream& outputs)
+   {
+      std::string wordCopy;
+
+      // Mot avec deux lettres échangées
+      for(size_t i = 0; i < word.size() - 1; ++i)
+      {
+         wordCopy = word;
+         std::swap(wordCopy[i], wordCopy[i+1]);
+
+         if(dictionary.contains(wordCopy))
+            outputs << '4' << ":" << wordCopy << std::endl;
+      }
+   }
 };
 
 #endif //ASD2_LABS_2020_CORRECTOR_H
