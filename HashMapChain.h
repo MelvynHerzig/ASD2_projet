@@ -55,7 +55,7 @@ public:
    * @param key Clé à vérifier.
    * @return Vrai si la clé est présente sinon faux.
    */
-   bool contains (const Key &key)
+   bool contains (const Key &key) const
    {
       size_t pos = super::getPos(key, hmap.size());
 
@@ -87,7 +87,7 @@ public:
    /**
     * @return Retourne la taille de la table de hachage.
     */
-   size_t tableSize ()
+   size_t tableSize () const
    {
       return hmap.size();
    }
@@ -99,7 +99,7 @@ private:
    * @param key Clé a rechercher
    * @return Retourne un itérateur sur la position de la clé sinon nullptr,
    */
-   CListIterator find (const Key &key)
+   CListIterator find (const Key &key) const
    {
       size_t pos = super::getPos(key, hmap.size());
 

@@ -1,6 +1,7 @@
 //
-// Created by melvy on 06/12/2020.
+// Created by Berney Alec, Forestier Quentin, Herzig Melvyn on 09 Dec 2020
 //
+
 #include "Person.h"
 
 bool Person::operator== (const Person &other) const
@@ -10,5 +11,3 @@ bool Person::operator== (const Person &other) const
           this->gender == other.gender &&
           this->birthday == other.birthday;
 }
-
-#include "Person.h"

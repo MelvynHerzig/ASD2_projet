@@ -6,12 +6,12 @@
 #define HASHMAP_WRAPPER_H
 
 #include <functional> // hash<Key>, equal_to<Key>
-#include <cmath>     // std::ceil
+#include <cmath>      // std::ceil
 
 enum hash_operation{ INSERTION, DELETION};
 
 /*
- * @Brief Classe englobante des methodes communes a définir et attributs communs
+ * @brief Classe englobante des methodes communes a définir et attributs communs
  *        aux classe HashMapLinearSample et HashMapChain.
  *        La fonction std::hash doit être définie pour le type de Key sinon passer
  *        une fonction personnalisé. De même, == doit être défini pour Key.
@@ -50,7 +50,7 @@ public:
     * @param key Clé à vérifier.
     * @return Vrai si la clé est présente sinon faux.
     */
-   virtual bool contains (const Key &key) = 0;
+   virtual bool contains (const Key &key) const = 0;
 
    /**
     * @brief Supprime la clé de la table de hachage si elle est présente, sans effet sinon.
@@ -61,7 +61,7 @@ public:
    /**
     * @return Retourne le nombre d'éléments de la table de hachage.
     */
-   size_t size ()
+   size_t size () const
    {
       return nbElem;
    }
@@ -75,7 +75,7 @@ protected:
     * @return Position correspondant au hachage dans la hmap associée.
     */
 
-   size_t getPos (const Key &key, size_t hmapSize)
+   size_t getPos (const Key &key, size_t hmapSize) const
    {
       return hash(key) % hmapSize;
    }

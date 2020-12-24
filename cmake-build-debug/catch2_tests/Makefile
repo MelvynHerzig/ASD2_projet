@@ -171,6 +171,33 @@ __/Person.cpp.s:
 	cd /d C:\Users\melvy\Desktop\APPLIC~1\Drive\HEIG_VD\3EMSEM~1\ASD2\Projet\ASD2_P~1\CMAKE-~1 && $(MAKE) $(MAKESILENT) -f catch2_tests\CMakeFiles\hashmap_tests_run.dir\build.make catch2_tests/CMakeFiles/hashmap_tests_run.dir/__/Person.cpp.s
 .PHONY : __/Person.cpp.s
 
+__/TSTreeWords.obj: __/TSTreeWords.cpp.obj
+
+.PHONY : __/TSTreeWords.obj
+
+# target to build an object file
+__/TSTreeWords.cpp.obj:
+	cd /d C:\Users\melvy\Desktop\APPLIC~1\Drive\HEIG_VD\3EMSEM~1\ASD2\Projet\ASD2_P~1\CMAKE-~1 && $(MAKE) $(MAKESILENT) -f catch2_tests\CMakeFiles\hashmap_tests_run.dir\build.make catch2_tests/CMakeFiles/hashmap_tests_run.dir/__/TSTreeWords.cpp.obj
+.PHONY : __/TSTreeWords.cpp.obj
+
+__/TSTreeWords.i: __/TSTreeWords.cpp.i
+
+.PHONY : __/TSTreeWords.i
+
+# target to preprocess a source file
+__/TSTreeWords.cpp.i:
+	cd /d C:\Users\melvy\Desktop\APPLIC~1\Drive\HEIG_VD\3EMSEM~1\ASD2\Projet\ASD2_P~1\CMAKE-~1 && $(MAKE) $(MAKESILENT) -f catch2_tests\CMakeFiles\hashmap_tests_run.dir\build.make catch2_tests/CMakeFiles/hashmap_tests_run.dir/__/TSTreeWords.cpp.i
+.PHONY : __/TSTreeWords.cpp.i
+
+__/TSTreeWords.s: __/TSTreeWords.cpp.s
+
+.PHONY : __/TSTreeWords.s
+
+# target to generate assembly for a file
+__/TSTreeWords.cpp.s:
+	cd /d C:\Users\melvy\Desktop\APPLIC~1\Drive\HEIG_VD\3EMSEM~1\ASD2\Projet\ASD2_P~1\CMAKE-~1 && $(MAKE) $(MAKESILENT) -f catch2_tests\CMakeFiles\hashmap_tests_run.dir\build.make catch2_tests/CMakeFiles/hashmap_tests_run.dir/__/TSTreeWords.cpp.s
+.PHONY : __/TSTreeWords.cpp.s
+
 catch_main.obj: catch_main.cpp.obj
 
 .PHONY : catch_main.obj
@@ -237,6 +264,9 @@ help:
 	@echo ... __/Person.obj
 	@echo ... __/Person.i
 	@echo ... __/Person.s
+	@echo ... __/TSTreeWords.obj
+	@echo ... __/TSTreeWords.i
+	@echo ... __/TSTreeWords.s
 	@echo ... catch_main.obj
 	@echo ... catch_main.i
 	@echo ... catch_main.s

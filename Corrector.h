@@ -36,7 +36,7 @@ public:
     * Constructeur
     * @param dictionaryFile Nom du fichier dictionnaire à lire et charger.
     */
-   Corrector(const std::string& dictionaryFile): dictionaryFilename(dictionaryFile), dictionary(countDictionaryWord())
+   Corrector(const std::string& dictionaryFile): dictionaryFilename(dictionaryFile), dictionary()
    {
       loadDictionary();
    }
@@ -56,7 +56,7 @@ public:
       {
          inputs >> word;
          correctString(word);
-         if(word != "" && !dictionary.contains(word))
+         if(!word.empty() && !dictionary.contains(word))
          {
             outputs << '*' + word << std::endl;
 
@@ -109,31 +109,6 @@ private:
        std::cout << "Chargement du dictionnaire en: " << duration << " ms" << std::endl;
 
        s.close();
-    }
-
-    /**
-    * @brief Compte le nombre de mot dans un fichier.
-    * @param filename Nom du fichier à analyser.
-    * @return Retourne le nombre de mot du fichier.
-    */
-    size_t countDictionaryWord()
-    {
-       std::ifstream s(dictionaryFilename);
-       size_t count = 0;
-       std::string line;
-
-       while(s.good())
-       {
-          s >> line;
-          std::stringstream linesStream(line);
-          while(getline(linesStream, line, ' '))
-          {
-             ++count;
-          }
-       }
-
-       s.close();
-       return count;
     }
 
     /**

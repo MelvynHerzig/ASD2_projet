@@ -182,6 +182,33 @@ Person.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\hashmap_main.dir\build.make CMakeFiles/hashmap_main.dir/Person.cpp.s
 .PHONY : Person.cpp.s
 
+TSTreeWords.obj: TSTreeWords.cpp.obj
+
+.PHONY : TSTreeWords.obj
+
+# target to build an object file
+TSTreeWords.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\hashmap_main.dir\build.make CMakeFiles/hashmap_main.dir/TSTreeWords.cpp.obj
+.PHONY : TSTreeWords.cpp.obj
+
+TSTreeWords.i: TSTreeWords.cpp.i
+
+.PHONY : TSTreeWords.i
+
+# target to preprocess a source file
+TSTreeWords.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\hashmap_main.dir\build.make CMakeFiles/hashmap_main.dir/TSTreeWords.cpp.i
+.PHONY : TSTreeWords.cpp.i
+
+TSTreeWords.s: TSTreeWords.cpp.s
+
+.PHONY : TSTreeWords.s
+
+# target to generate assembly for a file
+TSTreeWords.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\hashmap_main.dir\build.make CMakeFiles/hashmap_main.dir/TSTreeWords.cpp.s
+.PHONY : TSTreeWords.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -222,6 +249,9 @@ help:
 	@echo ... Person.obj
 	@echo ... Person.i
 	@echo ... Person.s
+	@echo ... TSTreeWords.obj
+	@echo ... TSTreeWords.i
+	@echo ... TSTreeWords.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

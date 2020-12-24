@@ -1,5 +1,5 @@
 //
-// Created by melvy on 06/12/2020.
+// Created by Berney Alec, Forestier Quentin, Herzig Melvyn on 09 Dec 2020
 //
 
 #ifndef ASD2_LABS_2020_PERSON_H
@@ -16,11 +16,19 @@ public:
    std::string gender;
    std::string birthday;
 
+   /**
+    * @brief Compare si la personne est égale à other.
+    * @param other Personne à comparer à l'objet courrant.
+    * @return Vrai si les objets sont égaux au niveau des attributs.
+    */
    bool operator== (const Person &other) const;
 };
 
 namespace std
 {
+   /**
+    * @brief surcharge de la fonction de hachage std pour une personne.
+    */
    template <>
    struct hash<Person>
    {

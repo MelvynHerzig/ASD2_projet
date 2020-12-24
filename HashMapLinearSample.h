@@ -76,7 +76,7 @@ public:
     * @param key Clé à vérifier.
     * @return Vrai si la clé est présente sinon faux.
     */
-   bool contains (const Key &key)
+   bool contains (const Key &key) const
    {
       if (find(key) > 0)
       { return true; }
@@ -104,7 +104,7 @@ public:
    /**
     * @return Retourne la taille de la table de hachage.
     */
-   size_t tableSize ()
+   size_t tableSize () const
    {
       return hmap.size();
    }
@@ -116,7 +116,7 @@ private:
     * @param key Clé a rechercher
     * @return Retourne la position de la clé si existante sinon -1.
     */
-   int find (const Key &key)
+   int find (const Key &key) const
    {
       size_t pos = super::getPos(key, hmap.size());
 
