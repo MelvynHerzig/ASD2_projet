@@ -5,6 +5,7 @@
 #include <iostream>      // std::cout, std::endl
 #include <set>           // std::set
 #include <unordered_set> // std::undordered_set
+#include "AdaptaterCorrector.h"
 #include "HashMapChain.h"
 #include "HashMapLinearSample.h"
 #include "TSTreeWords.h"
@@ -20,12 +21,11 @@ int main ()
 //--------------------------------------------------------------------------------
 
    // Changer le typedef pour changer le type de container utilisé. /!\ Décommenter 1 seulement.
-
    //typedef HashMapChain<string> Container;
    //typedef HashMapLinearSample<string> Container;
-   typedef set<string> Container;
-   //typedef unordered_set<string> Container;
-   //typedef TSTreeWords Container;
+   //typedef AdaptaterCorrector<string, set<string>> Container;            // Adaptation de std::set
+   //typedef AdaptaterCorrector<string, unordered_set<string>> Container;  // Adaptation de std::unordered_set
+   typedef TSTreeWords Container;
 
 //--------------------------------------------------------------------------------
 //                             CHOIX FICHIERS
