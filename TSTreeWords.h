@@ -18,6 +18,8 @@
  * Ainsi la structure pour être utilisé en tant que container pour la classe Corrector.
  *
  * L'arbre est équilibré sur ses sous arbres droites et gauches uniquement.
+ *
+ * Inspiré par: AVLTree de Olivier Cuisenaire & Algorithms (5.2 Tries) de Robert Sedgewick et Kevin Wayne
  */
 class TSTreeWords
 {
