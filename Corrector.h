@@ -51,7 +51,7 @@ public:
       std::ofstream outputs;
       outputs.open(output, std::ofstream::trunc);
 
-
+      auto t1 = std::chrono::high_resolution_clock::now();
       while(inputs.good())
       {
          inputs >> word;
@@ -66,6 +66,11 @@ public:
             tryTwoLettersSwapped(word, outputs);
          }
       }
+
+      auto t2 = std::chrono::high_resolution_clock::now();
+      auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
+      std::cout << "Correction du fichier en: " << duration << " ms" << std::endl;
+
       outputs.close();
       inputs.close();
    }

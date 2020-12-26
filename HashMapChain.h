@@ -8,6 +8,7 @@
 #include "HashMapCommon.h"
 #include <list>      // std::list<Key>
 #include <vector>    // std::vector<std::list<Key>>
+#include <algorithm> // std::find()
 
 /*
  * @Brief Classe définissant une table de hachage selon le principe de chaînage
@@ -19,7 +20,6 @@ class HashMapChain : public HashMapCommon<Key, Hash, Pred>
 {
 private:
    typedef HashMapCommon<Key, Hash, Pred> super;
-   typedef typename std::list<Key>::const_iterator CListIterator;
 
    std::vector<std::list<Key>> hmap;
 
@@ -35,19 +35,20 @@ public:
    }
 
    /**
-    * @brief Permet d'ajouter la clé dans la table de hachage, sans effet si présente.
-    * @param key Clé à ajouter.
+    * @brief Insertion d'un élément dans la hashmap.
+    * @param key Élément à insérer.
     */
    void insert (const Key &key)
    {
-      size_t pos = super::getPos(key, hmap.size());
-      if (!contains(key))
-      {
-         hmap[pos].push_back(key);
-         ++super::nbElem;
-      }
+      size_t pos = super::getKey(key, hmap.size());
 
-      super::checkDistribution(hmap.size(), INSERTION);
+      if (super::mustCheckContains && contains(key)) return;
+
+      hmap[pos].emplace_front(key);
+      ++super::nbElem;
+
+
+      super::checkDistribution(INSERTION);
    }
 
    /**
@@ -57,13 +58,9 @@ public:
    */
    bool contains (const Key &key) const
    {
-      size_t pos = super::getPos(key, hmap.size());
+      size_t pos = super::getKey(key, hmap.size());
 
-      CListIterator it = find(key);
-      if (it != hmap[pos].end())
-      { return true; }
-
-      return false;
+      return std::find(hmap[pos].begin(), hmap[pos].end(), key) != hmap[pos].end();
    }
 
    /**
@@ -72,16 +69,16 @@ public:
     */
    void erase (const Key &key)
    {
-      size_t pos = super::getPos(key, hmap.size());
+      size_t pos = super::getKey(key, hmap.size());
 
-      CListIterator it = find(key);
-      if (it != hmap[pos].end())
+      auto it = std::find(hmap[pos].begin(), hmap[pos].end(), key);
+      if(it != hmap[pos].end())
       {
          hmap[pos].erase(it);
          --super::nbElem;
       }
 
-      super::checkDistribution(hmap.size(), DELETION);
+      super::checkDistribution(DELETION);
    }
 
    /**
@@ -95,24 +92,6 @@ public:
 private:
 
    /**
-   * @Brief Calcule la position d'une clé dans la table de hachage puis dans la liste.
-   * @param key Clé a rechercher
-   * @return Retourne un itérateur sur la position de la clé sinon nullptr,
-   */
-   CListIterator find (const Key &key) const
-   {
-      size_t pos = super::getPos(key, hmap.size());
-
-      for (auto it = hmap[pos].begin(); it != hmap[pos].end(); ++it)
-      {
-         if (super::pred(*it, key))
-         { return it; }
-      }
-
-      return hmap[pos].end();
-   }
-
-   /**
     * @brief Redimensionne la table de hachage avec la nouvelle taille.
     * @param newSize Nouvelle taille à appliquer à la table de hachage.
     */
@@ -122,15 +101,16 @@ private:
       hmap.swap(tempHmap);
       super::nbElem = 0;
 
+      super::mustCheckContains = false;
       for (int i = 0; i < tempHmap.size(); ++i)
       {
-         for (const Key &key : tempHmap[i])
+         for (const Key& key : tempHmap[i])
          {
             insert(key);
          }
       }
+      super::mustCheckContains = true;
    }
-
 };
 
 #endif //ASD2_LABS_2020_HASHMAPCHAIN_H

@@ -33,7 +33,7 @@ public:
    }
 
    /**
-    * @brief Destructeur. Réallou la mémoire associé a la table de hachage.
+    * @brief Destructeur. Réalloue la mémoire associée de la table de hachage.
     */
    ~HashMapLinearSample()
    {
@@ -41,7 +41,6 @@ public:
       {
          if (hmap[i] != nullptr)
          {
-            insert(*hmap[i]);
             delete hmap[i];
             hmap[i] = nullptr;
          }
@@ -49,26 +48,25 @@ public:
    }
 
    /**
-    * @brief Permet d'ajouter la clé dans la table de hachage, sans effet si présente.
-    * @param key Clé à ajouter.
+    * @brief Insertion d'un élément dans la hashmap.
+    * @param key Élément à insérer.
     */
    void insert (const Key &key)
    {
-      size_t pos = super::getPos(key, hmap.size());
+      size_t pos = super::getKey(key, hmap.size());
 
       // We look for next empty cell
-      if (!contains(key))
-      {
-         while (hmap[pos] != nullptr)
-         {
-            pos = (pos + 1) % hmap.size();
-         }
+      if (super::mustCheckContains && contains(key)) return;
 
-         hmap[pos] = new Key(key);
-         ++super::nbElem;
+      while (hmap[pos] != nullptr)
+      {
+         pos = (pos + 1) % hmap.size();
       }
 
-      super::checkDistribution(hmap.size(), INSERTION);
+      hmap[pos] = new Key(key);
+      ++super::nbElem;
+
+      super::checkDistribution(INSERTION);
    }
 
    /**
@@ -79,7 +77,9 @@ public:
    bool contains (const Key &key) const
    {
       if (find(key) > 0)
-      { return true; }
+      {
+         return true;
+      }
 
       return false;
    }
@@ -98,7 +98,7 @@ public:
          --super::nbElem;
       }
 
-      super::checkDistribution(hmap.size(), DELETION);
+      super::checkDistribution(DELETION);
    }
 
    /**
@@ -118,7 +118,7 @@ private:
     */
    int find (const Key &key) const
    {
-      size_t pos = super::getPos(key, hmap.size());
+      size_t pos = super::getKey(key, hmap.size());
 
       while (hmap[pos] != nullptr && pos < hmap.size())
       {
@@ -142,6 +142,7 @@ private:
       hmap.swap(tempHmap);
       super::nbElem = 0;
 
+      super::mustCheckContains = false;
       for (int i = 0; i < tempHmap.size(); ++i)
       {
          if (tempHmap[i] != nullptr)
@@ -151,6 +152,7 @@ private:
             tempHmap[i] = nullptr;
          }
       }
+      super::mustCheckContains = true;
    }
 };
 

@@ -29,7 +29,8 @@ protected:
    const double REDUCT_AT;  // Ratio au dessous du quel réduir la taille de la table
    const double AUGMENT_AT; // Ratio au dessus du quel augmenter la taille de la table.
 
-public:
+   bool mustCheckContains; // Permet de ne pas appeler contains lors de l'insertion si true
+                           // Utilisé lors du redimensionnement
 
    /*
     * @brief Constructeur par défaut
@@ -66,7 +67,10 @@ public:
       return nbElem;
    }
 
-protected:
+   /**
+    * @return Retourne la taille de la table de hachage.
+    */
+   virtual size_t tableSize() const = 0;
 
    /**
     * @Brief Pour une longueur de hashMap donnée, spécifie ou insérer la clé.
@@ -75,7 +79,7 @@ protected:
     * @return Position correspondant au hachage dans la hmap associée.
     */
 
-   size_t getPos (const Key &key, size_t hmapSize) const
+   size_t getKey (const Key &key, size_t hmapSize) const
    {
       return hash(key) % hmapSize;
    }
@@ -84,18 +88,19 @@ protected:
     * @brief Pour une table de hachage, vérifie si elle doit être redimensionnée.
     *        Appel resize si tel est le cas.
     */
-   void checkDistribution (size_t hmapsize, hash_operation operation)
+   void checkDistribution (hash_operation operation)
    {
+      size_t hmapsize = tableSize();
       double ratio = (double) nbElem / (double) hmapsize;
 
-      if (ratio >= AUGMENT_AT)
+      if (operation == INSERTION && ratio >= AUGMENT_AT)
       {
-         if(operation == INSERTION) resize(hmapsize * 2);
+         resize(hmapsize * 2);
       }
 
-      if (ratio <= REDUCT_AT)
+      if (operation == DELETION && ratio <= REDUCT_AT)
       {
-         if(operation == DELETION) resize(std::ceil((double) hmapsize / (double) 2));
+         resize(std::ceil((double) hmapsize / (double) 2));
       }
    }
 
