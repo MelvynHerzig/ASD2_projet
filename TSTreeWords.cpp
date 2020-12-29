@@ -10,7 +10,7 @@
 
 void TSTreeWords::updateNodeHeight(Node* x)
 {
-   x->nodeHeight = std::max(std::max(height(x->right),height(x->left)), height(x->center)) + 1;
+   x->nodeHeight = std::max(height(x->right),height(x->left)) + 1;
 }
 
 TSTreeWords::Node* TSTreeWords::rotateRight(Node* x) {
