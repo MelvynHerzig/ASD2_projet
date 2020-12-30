@@ -60,14 +60,6 @@ protected:
    virtual void erase (const Key &key) = 0;
 
    /**
-    * @return Retourne le nombre d'éléments de la table de hachage.
-    */
-   size_t size () const
-   {
-      return nbElem;
-   }
-
-   /**
     * @return Retourne la taille de la table de hachage.
     */
    virtual size_t tableSize() const = 0;
@@ -109,6 +101,14 @@ protected:
     * @param newSize Nouvelle taille à appliquer à la table de hachage.
     */
    virtual void resize (size_t newSize) = 0;
+
+   /**
+    * @return Retourne le nombre d'éléments de la table de hachage.
+    */
+   public : size_t size () const
+   {
+      return nbElem;
+   }
 
 };
 
