@@ -1,1 +1,1 @@
-add_executable(hashmap_tests_run hashMapTest.cpp catch_main.cpp ../HashMapChain.h ../HashMapLinearSample.h ../Person.cpp ../Person.h ../Corrector.h ../TSTreeWords.cpp ../TSTreeWords.h ../AdaptaterCorrector.h)
+add_executable(hashmap_tests_run hashMapTest.cpp ternarySearchTreeTest.cpp catch_main.cpp ../HashMapChain.h ../HashMapLinearSample.h ../Person.cpp ../Person.h ../Corrector.h ../TSTreeWords.cpp ../TSTreeWords.h ../AdaptaterCorrector.h)
