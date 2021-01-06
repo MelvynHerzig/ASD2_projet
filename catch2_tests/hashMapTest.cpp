@@ -1,3 +1,7 @@
+/*
+ * Created by Berney Alec, Forestier Quentin, Herzig Melvyn on 02 Dec 2020
+ */
+
 #include "catch.hpp"
 #include "../hashMapChain.h"
 #include "../hashMapLinearSample.h"
