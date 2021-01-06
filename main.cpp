@@ -25,7 +25,7 @@ int main ()
    //typedef HashMapLinearSample<string> Container;
    //typedef AdaptaterCorrector<string, set<string>> Container;            // Adaptation de std::set
    //typedef AdaptaterCorrector<string, unordered_set<string>> Container;  // Adaptation de std::unordered_set
-   //typedef TSTreeWords Container;
+   typedef TSTreeWords Container;
 
 //--------------------------------------------------------------------------------
 //                             CHOIX FICHIERS
@@ -37,174 +37,13 @@ int main ()
    //string input = "..\\data\\input_lates.txt";
    //string input = "..\\data\\input_simple.txt";
    //string input = "..\\data\\input_wikipedia.txt";
-   //string input = "..\\data\\input_sh.txt";
+   string input = "..\\data\\input_sh.txt";
 
 //--------------------------------------------------------------------------------
 //                             EXECUTION
 //--------------------------------------------------------------------------------
-   //Corrector<Container> corrector(dictionary);
-   //corrector.correctFile(input);
-
-
-   {
-      cout << "----------------------------------------------------------\n" <<
-              "                      CUSTOM HMAP CHAIN\n" <<
-              "----------------------------------------------------------\n" << endl;
-
-      typedef HashMapChain<string> Container;
-
-      cout << "******* lates *******" << endl;
-      {
-         Corrector<Container> corrector(dictionary);
-         corrector.correctFile("..\\data\\input_lates.txt");
-      }
-
-      cout << "******* simple *******" << endl;
-      {
-         Corrector<Container> corrector(dictionary);
-         corrector.correctFile("..\\data\\input_simple.txt");
-      }
-
-      cout << "******* wikipedia *******" << endl;
-      {
-         Corrector<Container> corrector(dictionary);
-         corrector.correctFile("..\\data\\input_wikipedia.txt");
-      }
-
-      cout << "******* sh *******" << endl;
-      {
-         Corrector<Container> corrector(dictionary);
-         corrector.correctFile("..\\data\\input_sh.txt");
-      }
-   }
-
-   {
-      cout << "----------------------------------------------------------\n" <<
-              "                      CUSTOM HMAP SONDAGE\n" <<
-              "----------------------------------------------------------\n" << endl;
-
-      typedef HashMapLinearSample<string> Container;
-
-      cout << "******* lates *******" << endl;
-      {
-         Corrector<Container> corrector(dictionary);
-         corrector.correctFile("..\\data\\input_lates.txt");
-      }
-
-      cout << "******* simple *******" << endl;
-      {
-         Corrector<Container> corrector(dictionary);
-         corrector.correctFile("..\\data\\input_simple.txt");
-      }
-
-      cout << "******* wikipedia *******" << endl;
-      {
-         Corrector<Container> corrector(dictionary);
-         corrector.correctFile("..\\data\\input_wikipedia.txt");
-      }
-
-      cout << "******* sh *******" << endl;
-      {
-         Corrector<Container> corrector(dictionary);
-         corrector.correctFile("..\\data\\input_sh.txt");
-      }
-   }
-
-   {
-      cout << "----------------------------------------------------------\n" <<
-              "                      STANDARD SET\n" <<
-              "----------------------------------------------------------\n" << endl;
-
-      typedef AdaptaterCorrector<string, set<string>> Container;
-
-      cout << "******* lates *******" << endl;
-      {
-         Corrector<Container> corrector(dictionary);
-         corrector.correctFile("..\\data\\input_lates.txt");
-      }
-
-      cout << "******* simple *******" << endl;
-      {
-         Corrector<Container> corrector(dictionary);
-         corrector.correctFile("..\\data\\input_simple.txt");
-      }
-
-      cout << "******* wikipedia *******" << endl;
-      {
-         Corrector<Container> corrector(dictionary);
-         corrector.correctFile("..\\data\\input_wikipedia.txt");
-      }
-
-      cout << "******* sh *******" << endl;
-      {
-         Corrector<Container> corrector(dictionary);
-         corrector.correctFile("..\\data\\input_sh.txt");
-      }
-   }
-
-   {
-      cout << "----------------------------------------------------------\n" <<
-              "                      STANDARD UNORDERED SET\n" <<
-              "----------------------------------------------------------\n" << endl;
-
-      typedef AdaptaterCorrector<string, unordered_set<string>> Container;
-
-      cout << "******* lates *******" << endl;
-      {
-         Corrector<Container> corrector(dictionary);
-         corrector.correctFile("..\\data\\input_lates.txt");
-      }
-
-      cout << "******* simple *******" << endl;
-      {
-         Corrector<Container> corrector(dictionary);
-         corrector.correctFile("..\\data\\input_simple.txt");
-      }
-
-      cout << "******* wikipedia *******" << endl;
-      {
-         Corrector<Container> corrector(dictionary);
-         corrector.correctFile("..\\data\\input_wikipedia.txt");
-      }
-
-      cout << "******* sh *******" << endl;
-      {
-         Corrector<Container> corrector(dictionary);
-         corrector.correctFile("..\\data\\input_sh.txt");
-      }
-   }
-
-   {
-      cout << "----------------------------------------------------------\n" <<
-              "                      CUSTOM TERNARY SEARCH TRIE\n " <<
-              "----------------------------------------------------------\n" << endl;
-
-      typedef TSTreeWords Container;
-
-      cout << "******* lates *******" << endl;
-      {
-         Corrector<Container> corrector(dictionary);
-         corrector.correctFile("..\\data\\input_lates.txt");
-      }
-
-      cout << "******* simple *******" << endl;
-      {
-         Corrector<Container> corrector(dictionary);
-         corrector.correctFile("..\\data\\input_simple.txt");
-      }
-
-      cout << "******* wikipedia *******" << endl;
-      {
-         Corrector<Container> corrector(dictionary);
-         corrector.correctFile("..\\data\\input_wikipedia.txt");
-      }
-
-      cout << "******* sh *******" << endl;
-      {
-         Corrector<Container> corrector(dictionary);
-         corrector.correctFile("..\\data\\input_sh.txt");
-      }
-   }
+   Corrector<Container> corrector(dictionary);
+   corrector.correctFile(input);
 
    return 0;
 }
