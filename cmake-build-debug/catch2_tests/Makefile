@@ -144,6 +144,33 @@ hashmap_tests_run/fast:
 	cd /d C:\Users\melvy\Desktop\APPLIC~1\Drive\HEIG_VD\3EMSEM~1\ASD2\Projet\ASD2_P~1\CMAKE-~1 && $(MAKE) $(MAKESILENT) -f catch2_tests\CMakeFiles\hashmap_tests_run.dir\build.make catch2_tests/CMakeFiles/hashmap_tests_run.dir/build
 .PHONY : hashmap_tests_run/fast
 
+TernarySearchTreeTest.obj: TernarySearchTreeTest.cpp.obj
+
+.PHONY : TernarySearchTreeTest.obj
+
+# target to build an object file
+TernarySearchTreeTest.cpp.obj:
+	cd /d C:\Users\melvy\Desktop\APPLIC~1\Drive\HEIG_VD\3EMSEM~1\ASD2\Projet\ASD2_P~1\CMAKE-~1 && $(MAKE) $(MAKESILENT) -f catch2_tests\CMakeFiles\hashmap_tests_run.dir\build.make catch2_tests/CMakeFiles/hashmap_tests_run.dir/TernarySearchTreeTest.cpp.obj
+.PHONY : TernarySearchTreeTest.cpp.obj
+
+TernarySearchTreeTest.i: TernarySearchTreeTest.cpp.i
+
+.PHONY : TernarySearchTreeTest.i
+
+# target to preprocess a source file
+TernarySearchTreeTest.cpp.i:
+	cd /d C:\Users\melvy\Desktop\APPLIC~1\Drive\HEIG_VD\3EMSEM~1\ASD2\Projet\ASD2_P~1\CMAKE-~1 && $(MAKE) $(MAKESILENT) -f catch2_tests\CMakeFiles\hashmap_tests_run.dir\build.make catch2_tests/CMakeFiles/hashmap_tests_run.dir/TernarySearchTreeTest.cpp.i
+.PHONY : TernarySearchTreeTest.cpp.i
+
+TernarySearchTreeTest.s: TernarySearchTreeTest.cpp.s
+
+.PHONY : TernarySearchTreeTest.s
+
+# target to generate assembly for a file
+TernarySearchTreeTest.cpp.s:
+	cd /d C:\Users\melvy\Desktop\APPLIC~1\Drive\HEIG_VD\3EMSEM~1\ASD2\Projet\ASD2_P~1\CMAKE-~1 && $(MAKE) $(MAKESILENT) -f catch2_tests\CMakeFiles\hashmap_tests_run.dir\build.make catch2_tests/CMakeFiles/hashmap_tests_run.dir/TernarySearchTreeTest.cpp.s
+.PHONY : TernarySearchTreeTest.cpp.s
+
 __/Person.obj: __/Person.cpp.obj
 
 .PHONY : __/Person.obj
@@ -261,6 +288,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... hashmap_tests_run
+	@echo ... TernarySearchTreeTest.obj
+	@echo ... TernarySearchTreeTest.i
+	@echo ... TernarySearchTreeTest.s
 	@echo ... __/Person.obj
 	@echo ... __/Person.i
 	@echo ... __/Person.s
