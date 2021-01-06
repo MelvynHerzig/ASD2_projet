@@ -10,153 +10,160 @@ using namespace std;
 #define MIN_LINEAR_INSERT 0.125
 #define MIN_TABLE_SIZE 1
 
-TEST_CASE("Tests", "[hashmap]")
+TEMPLATE_TEST_CASE("Tests for hashmap<size_t>", "[hashmap]", HashMapLinearSample<size_t>, HashMapChain<size_t>)
 {
-   HashMapChain<size_t> hashMapChainInt;
-   HashMapChain<string> hashMapChainString;
-   HashMapLinearSample<size_t> hashMapLinearSampleInt;
-   HashMapLinearSample<string> hashMapLinearSampleString;
 
-    SECTION("Empty hashMap")
-    {
-       REQUIRE(hashMapChainInt.size() == 0);
-       REQUIRE(hashMapChainString.size() == 0);
-       REQUIRE(hashMapLinearSampleInt.size() == 0);
-       REQUIRE(hashMapLinearSampleString.size() == 0);
-    }
+   TestType hashmap = TestType();
+
+   SECTION("Empty hashMap")
+   {
+      REQUIRE(hashmap.size() == 0);
+   }
 
    SECTION("Insert 1 element")
    {
-       hashMapChainInt.insert(1);
-       REQUIRE(hashMapChainInt.contains(1));
-       REQUIRE(hashMapChainInt.size() == 1);
-
-       hashMapChainString.insert("test");
-       REQUIRE(hashMapChainString.contains("test"));
-       REQUIRE(hashMapChainString.size() == 1);
-
-       hashMapLinearSampleInt.insert(1);
-       REQUIRE(hashMapLinearSampleInt.contains(1));
-       REQUIRE(hashMapLinearSampleInt.size() == 1);
-
-       hashMapLinearSampleString.insert("test");
-       REQUIRE(hashMapLinearSampleString.contains("test"));
-       REQUIRE(hashMapLinearSampleString.size() == 1);
+      hashmap.insert(1);
+      REQUIRE(hashmap.contains(1));
+      REQUIRE(hashmap.size() == 1);
    }
 
    SECTION("Insert 1 element already in hashMap")
    {
-       hashMapChainInt.insert(1);
-       REQUIRE(hashMapChainInt.contains(1));
-       REQUIRE(hashMapChainInt.size() == 1);
-
-       hashMapChainString.insert("test");
-       REQUIRE(hashMapChainString.contains("test"));
-       REQUIRE(hashMapChainString.size() == 1);
-
-       hashMapLinearSampleInt.insert(1);
-       REQUIRE(hashMapLinearSampleInt.contains(1));
-       REQUIRE(hashMapLinearSampleInt.size() == 1);
-
-       hashMapLinearSampleString.insert("test");
-       REQUIRE(hashMapLinearSampleString.contains("test"));
-       REQUIRE(hashMapLinearSampleString.size() == 1);
-
+      hashmap.insert(1);
+      REQUIRE(hashmap.contains(1));
+      REQUIRE(hashmap.size() == 1);
    }
 
    SECTION("Erase 1 element")
    {
-       hashMapChainInt.erase(1);
-       REQUIRE(!hashMapChainInt.contains(1));
-       REQUIRE(hashMapChainInt.size() == 0);
-
-       hashMapChainString.erase("test");
-       REQUIRE(!hashMapChainString.contains("test"));
-       REQUIRE(hashMapChainString.size() == 0);
-
-       hashMapLinearSampleInt.erase(1);
-       REQUIRE(!hashMapLinearSampleInt.contains(1));
-       REQUIRE(hashMapLinearSampleInt.size() == 0);
-
-       hashMapLinearSampleString.erase("test");
-       REQUIRE(!hashMapLinearSampleString.contains("test"));
-       REQUIRE(hashMapLinearSampleString.size() == 0);
+      hashmap.erase(1);
+      REQUIRE(!hashmap.contains(1));
+      REQUIRE(hashmap.size() == 0);
    }
 
    SECTION("Erase non existant element")
    {
-       REQUIRE(!hashMapChainInt.contains(1));
-       hashMapChainInt.erase(1);
-       REQUIRE(hashMapChainInt.size() == 0);
-
-       REQUIRE(!hashMapChainString.contains("test"));
-       hashMapChainString.erase("test");
-       REQUIRE(hashMapChainString.size() == 0);
-
-       REQUIRE(!hashMapLinearSampleInt.contains(1));
-       hashMapLinearSampleInt.erase(1);
-       REQUIRE(hashMapLinearSampleInt.size() == 0);
-
-       REQUIRE(!hashMapLinearSampleString.contains("test"));
-       hashMapLinearSampleString.erase("test");
-       REQUIRE(hashMapLinearSampleString.size() == 0);
+      REQUIRE(!hashmap.contains(1));
+      hashmap.erase(1);
+      REQUIRE(hashmap.size() == 0);
    }
 
    SECTION("Insert elements")
    {
-       for (int i : {2, 4, 6, 8, 10})
-       {
-          hashMapChainInt.insert(i);
-          hashMapChainString.insert(" test " + to_string(i));
-          hashMapLinearSampleInt.insert(i);
-          hashMapLinearSampleString.insert(" test " + to_string(i));
-       }
+      for (int i : {2, 4, 6, 8, 10})
+      {
+         hashmap.insert(i);
+      }
 
-       for (int i : {2, 4, 6, 8, 10})
-       {
-          REQUIRE(hashMapChainInt.contains(i));
-          REQUIRE(hashMapChainString.contains(" test " + to_string(i)));
-          REQUIRE(hashMapLinearSampleInt.contains(i));
-          REQUIRE(hashMapLinearSampleString.contains(" test " + to_string(i)));
-       }
+      for (int i : {2, 4, 6, 8, 10})
+      {
+         REQUIRE(hashmap.contains(i));
+      }
 
-       for (int i : {1, 3, 5, 7, 9})
-       {
-          REQUIRE(!hashMapChainInt.contains(i));
-          REQUIRE(!hashMapChainString.contains(" test " + to_string(i)));
-          REQUIRE(!hashMapLinearSampleInt.contains(i));
-          REQUIRE(!hashMapLinearSampleString.contains(" test " + to_string(i)));
-       }
+      for (int i : {1, 3, 5, 7, 9})
+      {
+         REQUIRE(!hashmap.contains(i));
+      }
 
-       REQUIRE(hashMapChainInt.size() == 5);
-       REQUIRE(hashMapChainString.size() == 5);
-       REQUIRE(hashMapLinearSampleInt.size() == 5);
-       REQUIRE(hashMapLinearSampleString.size() == 5);
+      REQUIRE(hashmap.size() == 5);
    }
 
    SECTION("Erase all elements")
    {
       for (int i : {2, 4, 6, 8, 10})
       {
-         hashMapChainInt.erase(i);
-         hashMapChainString.erase(" test " + to_string(i));
-         hashMapLinearSampleInt.erase(i);
-         hashMapLinearSampleString.erase(" test " + to_string(i));
+         hashmap.erase(i);
       }
 
       for (int i : {2, 4, 6, 8, 10})
       {
-         REQUIRE(!hashMapChainInt.contains(i));
-         REQUIRE(!hashMapChainString.contains(" test " + to_string(i)));
-         REQUIRE(!hashMapLinearSampleInt.contains(i));
-         REQUIRE(!hashMapLinearSampleString.contains(" test " + to_string(i)));
+         REQUIRE(!hashmap.contains(i));
       }
 
-      REQUIRE(hashMapChainInt.size() == 0);
-      REQUIRE(hashMapChainString.size() == 0);
-      REQUIRE(hashMapLinearSampleInt.size() == 0);
-      REQUIRE(hashMapLinearSampleString.size() == 0);
+      REQUIRE(hashmap.size() == 0);
    }
+}
+
+TEMPLATE_TEST_CASE("Tests for hashmap<string>", "[hashmap]", HashMapLinearSample<string>, HashMapChain<string>)
+{
+
+   TestType hashmap = TestType();
+
+   SECTION("Empty hashMap")
+   {
+      REQUIRE(hashmap.size() == 0);
+   }
+
+   SECTION("Insert 1 element")
+   {
+      hashmap.insert("test");
+      REQUIRE(hashmap.contains("test"));
+      REQUIRE(hashmap.size() == 1);
+   }
+
+   SECTION("Insert 1 element already in hashMap")
+   {
+      hashmap.insert("test");
+      REQUIRE(hashmap.contains("test"));
+      REQUIRE(hashmap.size() == 1);
+   }
+
+   SECTION("Erase 1 element")
+   {
+      hashmap.erase("test");
+      REQUIRE(!hashmap.contains("test"));
+      REQUIRE(hashmap.size() == 0);
+   }
+
+   SECTION("Erase non existant element")
+   {
+      REQUIRE(!hashmap.contains("test"));
+      hashmap.erase("test");
+      REQUIRE(hashmap.size() == 0);
+   }
+
+   SECTION("Insert elements")
+   {
+      for (int i : {2, 4, 6, 8, 10})
+      {
+         hashmap.insert(" test " + to_string(i));
+      }
+
+      for (int i : {2, 4, 6, 8, 10})
+      {
+         REQUIRE(hashmap.contains(" test " + to_string(i)));
+      }
+
+      for (int i : {1, 3, 5, 7, 9})
+      {
+         REQUIRE(!hashmap.contains(" test " + to_string(i)));
+      }
+
+      REQUIRE(hashmap.size() == 5);
+   }
+
+   SECTION("Erase all elements")
+   {
+      for (int i : {2, 4, 6, 8, 10})
+      {
+         hashmap.erase(" test " + to_string(i));
+      }
+
+      for (int i : {2, 4, 6, 8, 10})
+      {
+         REQUIRE(!hashmap.contains(" test " + to_string(i)));
+      }
+
+      REQUIRE(hashmap.size() == 0);
+   }
+}
+
+TEST_CASE("Tests for hashmap size", "[hashmap]")
+{
+   HashMapChain<size_t> hashMapChainInt;
+   HashMapChain<string> hashMapChainString;
+   HashMapLinearSample<size_t> hashMapLinearSampleInt;
+   HashMapLinearSample<string> hashMapLinearSampleString;
 
    SECTION("Resizing hashmap cases")
    {
